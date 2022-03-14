@@ -31,7 +31,6 @@ def shorten_url():
 def home():
     if request.method == "POST":
         url_received = request.form["nm"]
-        # print(url_received)
         found_url = Urls.query.filter_by(long=url_received).first()
         if found_url:
             return redirect(url_for("display_short_url", url=found_url.short))
@@ -53,9 +52,5 @@ def redirection(short_url):
         return redirect(long_url.long)
     else:
         return f'<h1>Url doesn\'t exist</h1>'
-@app.route('/echo')
-def hello_echo():
-    return "HELLO echo"
-if(__name__ == '__main__'):
-    app.run(port=5000, debug=True)
-#min 7 in video
+# if(__name__ == '__main__'):
+#     app.run(port=5000, debug=True)
